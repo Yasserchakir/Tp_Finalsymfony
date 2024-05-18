@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipe Index{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .table-container {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .table thead th {
+           
+            color: white;
+            text-align: center;
+        }
+        .table tbody td {
+            text-align: center;
+        }
+        .btn-primary, .btn-secondary {
+            margin-right: 5px;
+        }
+        .no-records {
+            background-color: #f8f9fa;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Equipe Index</h1>
+
+        <div class="table-container">
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Localisation</th>
+                        <th scope="col">Stade Domicile</th>
+                        <th scope="col">Entraineur</th>
+                        <th scope="col">Capitaine</th>
+                        <th scope="col">Formation</th>
+                        <th scope="col">Style de Jeu</th>
+                        <th scope="col">Taille Equipe</th>
+                        <th scope="col">Ligue</th>
+                        <th scope="col">Budget</th>
+                        <th scope="col">Réalisations</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for equipe in equipes %}
+                    <tr>
+                        <td>{{ equipe.id }}</td>
+                        <td>{{ equipe.Nom }}</td>
+                        <td>{{ equipe.Localisation }}</td>
+                        <td>{{ equipe.StadeDomiciel }}</td>
+                        <td>{{ equipe.Entraineur }}</td>
+                        <td>{{ equipe.Capitaine }}</td>
+                        <td>{{ equipe.Formation }}</td>
+                        <td>{{ equipe.StyleJeu }}</td>
+                        <td>{{ equipe.TailleEquipe }}</td>
+                        <td>{{ equipe.Lique }}</td>
+                        <td>{{ equipe.Budget }}</td>
+                        <td>{{ equipe.Realisations }}</td>
+                        <td>
+                            <a href="{{ path('app_equipe_show', {'id': equipe.id}) }}" class="btn btn-sm btn-primary">Show</a>
+                            <a href="{{ path('app_equipe_edit', {'id': equipe.id}) }}" class="btn btn-sm btn-secondary">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr class="no-records">
+                        <td colspan="13" class="text-center">No records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4">
+            <a href="{{ path('app_equipe_new') }}" class="btn btn-success">Create New</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des joueurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des joueurs</h1>
+
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th style="border: 1px solid #ddd; padding: 8px;">Id</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Nom</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Age</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Date de naissance</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Nationalité</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Position</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Numéro de maillot</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Pied préféré</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Statut du contrat</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Niveau de compétence</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for joueur in joueurs %}
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ joueur.id }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ joueur.Nom }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ joueur.Age }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ joueur.DateNaissance ? joueur.DateNaissance|date('Y-m-d') : '' }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ joueur.Nationalite }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ joueur.Position }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ joueur.NumeroMaillot }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ joueur.Pied }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ joueur.StatutContrat }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ joueur.NiveauCompetence }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">
+                    <a href="{{ path('app_joueur_show', {'id': joueur.id}) }}">Voir</a>
+                    <a href="{{ path('app_joueur_edit', {'id': joueur.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11" style="border: 1px solid #ddd; padding: 8px;">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_joueur_new') }}">Créer un nouveau joueur</a>
+{% endblock %}

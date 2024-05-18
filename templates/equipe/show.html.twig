@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipe{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .detail-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: white;
+        }
+        .detail-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="detail-container">
+            <h1>Equipe Details</h1>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ equipe.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ equipe.Nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Localisation</th>
+                        <td>{{ equipe.Localisation }}</td>
+                    </tr>
+                    <tr>
+                        <th>Stade Domiciel</th>
+                        <td>{{ equipe.StadeDomiciel }}</td>
+                    </tr>
+                    <tr>
+                        <th>Entraineur</th>
+                        <td>{{ equipe.Entraineur }}</td>
+                    </tr>
+                    <tr>
+                        <th>Capitaine</th>
+                        <td>{{ equipe.Capitaine }}</td>
+                    </tr>
+                    <tr>
+                        <th>Formation</th>
+                        <td>{{ equipe.Formation }}</td>
+                    </tr>
+                    <tr>
+                        <th>Style de Jeu</th>
+                        <td>{{ equipe.StyleJeu }}</td>
+                    </tr>
+                    <tr>
+                        <th>Taille Equipe</th>
+                        <td>{{ equipe.TailleEquipe }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ligue</th>
+                        <td>{{ equipe.Lique }}</td>
+                    </tr>
+                    <tr>
+                        <th>Budget</th>
+                        <td>{{ equipe.Budget }}</td>
+                    </tr>
+                    <tr>
+                        <th>Réalisations</th>
+                        <td>{{ equipe.Realisations }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="action-buttons">
+                <a href="{{ path('app_equipe_index') }}" class="btn btn-secondary">Back to List</a>
+                <div>
+                    <a href="{{ path('app_equipe_edit', {'id': equipe.id}) }}" class="btn btn-primary">Edit</a>
+                    {{ include('equipe/_delete_form.html.twig', { 'class': 'd-inline' }) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

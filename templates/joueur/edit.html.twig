@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Joueur{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: white;
+        }
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container .form-group {
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            margin-bottom: 10px; /* Ajout de la marge inférieure */
+            margin-bottom: 10px; /* Ajout de la marge inférieure */
+            display: block; /* Pour forcer chaque label à être sur une ligne différente */
+        }
+        .form-container .btn-primary {
+            width: 100%;
+        }
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .back-to-list, .delete-form {
+            display: inline-block;
+            width: 48%;
+        }
+        .back-to-list a, .delete-form form {
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="form-container">
+            <h1>Edit Joueur</h1>
+
+            {{ include('joueur/_form.html.twig', {'button_label': 'Update'}) }}
+
+            <div class="form-actions">
+                <div class="back-to-list">
+                    <a href="{{ path('app_joueur_index') }}" class="btn btn-secondary">Back to List</a>
+                </div>
+                <div class="delete-form">
+                    {{ include('joueur/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

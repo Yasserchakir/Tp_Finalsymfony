@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Joueur{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .detail-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: white;
+        }
+        .detail-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .action-buttons a {
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="detail-container">
+            <h1>Détails du Joueur</h1>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ joueur.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ joueur.Nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Age</th>
+                        <td>{{ joueur.Age }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de naissance</th>
+                        <td>{{ joueur.DateNaissance ? joueur.DateNaissance|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nationalité</th>
+                        <td>{{ joueur.Nationalite }}</td>
+                    </tr>
+                    <tr>
+                        <th>Position</th>
+                        <td>{{ joueur.Position }}</td>
+                    </tr>
+                    <tr>
+                        <th>Numéro de maillot</th>
+                        <td>{{ joueur.NumeroMaillot }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pied</th>
+                        <td>{{ joueur.Pied }}</td>
+                    </tr>
+                    <tr>
+                        <th>Statut du contrat</th>
+                        <td>{{ joueur.StatutContrat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Niveau de compétence</th>
+                        <td>{{ joueur.NiveauCompetence }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="action-buttons">
+                <a href="{{ path('app_joueur_index') }}" class="btn btn-secondary">Retour à la liste</a>
+                <a href="{{ path('app_joueur_edit', {'id': joueur.id}) }}" class="btn btn-primary">Modifier</a>
+                {{ include('joueur/_delete_form.html.twig', { 'class': 'btn btn-danger d-inline' }) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

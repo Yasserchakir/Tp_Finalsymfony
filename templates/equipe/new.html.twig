@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Equipe{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: white;
+        }
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-label {
+            margin-bottom: 2px;
+            font-weight: bold;
+        }
+        .form-container .btn-primary {
+            width: 100%;
+        }
+        .back-to-list {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="form-container">
+            <h1>Create New Equipe</h1>
+            {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.Nom, 'Nom', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Nom, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.Localisation, 'Localisation', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Localisation, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.Stade_domiciel, 'Stade Domicile', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Stade_domiciel, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.Entraineur, 'Entraineur', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Entraineur, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.Capitaine, 'Capitaine', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Capitaine, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.Formation, 'Formation', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Formation, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.Style_jeu, 'Style de Jeu', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Style_jeu, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.Taille_equipe, 'Taille Equipe', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Taille_equipe, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.Lique, 'Ligue', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Lique, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.Budget, 'Budget', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Budget, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.Realisations, 'Réalisations', { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.Realisations, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            {{ form_end(form) }}
+            <a href="{{ path('app_equipe_index') }}" class="btn btn-secondary back-to-list">Back to List</a>
+        </div>
+    </div>
+{% endblock %}

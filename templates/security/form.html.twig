@@ -1,0 +1,9 @@
+{# templates/includes/form.html.twig #}
+<form action="{{ action }}" method="post">
+    {{ form_start(form) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.remember_me) }}
+    <button type="submit">Se connecter</button>
+    {{ form_end(form) }}
+</form>
